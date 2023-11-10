@@ -128,17 +128,16 @@ public static class ConfigureDbTalent
         }
     }
 
-    public static void SeedAttachments(this IDbConnection db, ServiceStackHost appHost, string sourceDir)
+    public static void SeedAttachments(this IDbConnection db, string sourceDir, string targetDir)
     {
-        sourceDir.AssertDir();
         var resumeFileInfo = new FileInfo(Path.Join(sourceDir, "sample_resume.pdf"));
         var coverFileInfo = new FileInfo(Path.Join(sourceDir, "sample_coverletter.pdf"));
 
         var jobApps = db.LoadSelect<JobApplication>();
         foreach (var jobApp in jobApps)
         {
-            db.Save(sourceDir.CreatePdfAttachment(jobApp, resumeFileInfo));
-            db.Save(sourceDir.CreatePdfAttachment(jobApp, coverFileInfo));
+            db.Save(targetDir.CreatePdfAttachment(jobApp, resumeFileInfo));
+            db.Save(targetDir.CreatePdfAttachment(jobApp, coverFileInfo));
         }
     }
 

@@ -67,7 +67,7 @@ public class Migration1000 : MigrationBase
             ? "~/wwwroot/profiles".MapProjectPath()
             : Path.Join(AppContext.BaseDirectory, "wwwroot", "profiles");
         Db.SeedTalent(appHost,profilesDir);
-        Db.SeedAttachments(appHost, appHost.ContentRootDirectory.RealPath.CombineWith("Migrations", "seed"));
+        Db.SeedAttachments(appHost.ContentRootDirectory.RealPath.CombineWith("Migrations", "seed"),appHost.ContentRootDirectory.RealPath.CombineWith("App_Data"));
     }
 
     public void CreateBooking(IDbConnection? db,
