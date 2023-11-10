@@ -56,6 +56,14 @@
     <ItemGroup>
         <Content Include="_pages\**" CopyToPublishDirectory="PreserveNewest"/>
         <Content Include="_videos\**" CopyToPublishDirectory="PreserveNewest"/>
+        <None Remove="Migrations\seed\sample_coverletter.pdf" />
+        <Content Include="Migrations\seed\sample_coverletter.pdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Migrations\seed\sample_resume.pdf" />
+        <Content Include="Migrations\seed\sample_resume.pdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
