@@ -1,7 +1,9 @@
 ﻿@inherits AppComponentBase
 @inject NavigationManager navigationManager;
 @layout MainLayout
+@using ServiceStack.Blazor.Components.Tailwind
 @page "/jobs/create"
+@rendermode RenderMode.InteractiveServer
 
 <SetHeader>
     <div class="flex-1 min-w-0">
@@ -25,12 +27,10 @@
 </SetHeader>
 <main class="space-y-8 divide-y divide-gray-200">
     <div class="space-y-8 divide-y divide-gray-200">
-        @if (appMetadata != null)
-        {
-            <CascadingValue Value="appMetadata">
-                <AutoQueryForm TResponse="Job" T="CreateJob" Request="request" OnSave="Save" OnDone="Done" OnCancel="OnCancel"></AutoQueryForm>
-            </CascadingValue>
-        }
+        <AutoCreateForm Model="Job" 
+                        ApiType="typeof(CreateJob)" 
+                        FormStyle="FormStyle.Card"
+                        Save="(job) => Done(job)"></AutoCreateForm>
     </div>
 </main>
 
