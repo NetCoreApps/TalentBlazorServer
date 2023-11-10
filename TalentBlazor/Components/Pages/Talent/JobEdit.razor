@@ -1,7 +1,9 @@
 ﻿@inherits AppComponentBase
 @inject NavigationManager navigationManager;
+@using ServiceStack.Blazor.Components.Tailwind
 @layout MainLayout
 @page "/jobs/{JobId:int}/edit"
+@rendermode RenderMode.InteractiveServer
 
 <SetHeader>
     <div class="flex-1 min-w-0">
@@ -36,12 +38,7 @@
 
 <main class="space-y-8 divide-y divide-gray-200">
     <div class="space-y-8 divide-y divide-gray-200">
-        @if (appMetadata != null)
-        {
-            <CascadingValue Value="appMetadata">
-                <AutoQueryForm TResponse="Job" T="UpdateJob" Request="request" OnSave="Save" OnDone="Done" OnCancel="OnCancel"></AutoQueryForm>
-            </CascadingValue>
-        }
+        <AutoEditForm ApiType="typeof(UpdateJob)" Edit="job" FormStyle="FormStyle.Card" Model="Job" Save="Save" Done="OnCancel" />
     </div>
 </main>
 
@@ -56,16 +53,12 @@
     UpdateJob request = new();
     Job? job;
 
-    async Task Save(UpdateJob req)
+    async Task Save(Job model)
     {
-        //request = req;
-    }
-
-    async Task Done(Job response)
-    {
+        await RefreshData();
         navigationManager.NavigateTo("/jobs/" + JobId + "/applications");
     }
-
+    
     async Task OnCancel()
     {
         navigationManager.NavigateTo("/jobs/" + JobId + "/applications");

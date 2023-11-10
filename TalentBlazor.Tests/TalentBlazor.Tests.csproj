@@ -22,6 +22,7 @@
 
 <!--  <ItemGroup>-->
 <!--    <ProjectReference Include="..\..\..\ServiceStack\ServiceStack\ServiceStack\src\ServiceStack\ServiceStack.csproj" />-->
+<!--    <ProjectReference Include="..\..\..\ServiceStack\ServiceStack\ServiceStack\src\ServiceStack.Kestrel\ServiceStack.Kestrel.csproj" />-->
 <!--  </ItemGroup>-->
 
 </Project>
