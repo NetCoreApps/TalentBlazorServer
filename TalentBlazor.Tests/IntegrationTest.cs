@@ -22,6 +22,7 @@ public class IntegrationTest
 
     public IntegrationTest()
     {
+        Licensing.RegisterLicense("OSS MIT 2023 https://github.com/NetCoreApps/TalentBlazorServer NdCmSFOfRpijw7CNjO4WXv4gYzeHjYSOaFRVlbp5rezlsB1FtDHUA34hYsJDMbxWDMiXqG29DPzPvJb6oXqLqkdCISRKOhhjZKb1KleG67PaHj9B2E/s65m9mB7Okq3uUHJzxpkn/3M0lvI4qL6Gb6jfmrx0+N0QxYsY41rjQpo=");
         appHost = new AppHost()
             .Init()
             .Start(BaseUri);
