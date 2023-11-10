@@ -1,5 +1,6 @@
 using ServiceStack.Auth;
 using TalentBlazor.Data;
+using TalentBlazor.ServiceModel;
 
 [assembly: HostingStartup(typeof(TalentBlazor.ConfigureAuth))]
 

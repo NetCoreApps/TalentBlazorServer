@@ -1,5 +1,6 @@
 ﻿@page "/dashboard"
 @inherits AppComponentBase
+@layout MainLayout
 @inject NavigationManager NavigationManager;
 
 <SetHeader>
@@ -69,7 +70,7 @@
                     </Authorizing>
                     <NotAuthorized>
                         <div class="mt-5 flex justify-center sm:mt-0">
-                            <a href="/signin" class="flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Sign in </a>
+                            <a href="/Account/Login" class="flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> Sign in </a>
                         </div>
                     </NotAuthorized>
                 </AuthorizeView>

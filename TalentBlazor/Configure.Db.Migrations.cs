@@ -44,6 +44,8 @@ public class ConfigureDbMigrations : IHostingStartup
             AppTasks.Run();
         });
 
+    public static List<string> allSeedUsers = new();
+    
     private async Task AddSeedUsers(IServiceProvider services)
     {
         var scopeFactory = services.GetRequiredService<IServiceScopeFactory>();
@@ -68,6 +70,7 @@ public class ConfigureDbMigrations : IHostingStartup
             if (roles?.Length > 0)
             {
                 var newUser = await userManager.FindByEmailAsync(user.Email!);
+                allSeedUsers.Add(newUser.Id);
                 assertResult(await userManager.AddToRolesAsync(user, roles));
             }
         }

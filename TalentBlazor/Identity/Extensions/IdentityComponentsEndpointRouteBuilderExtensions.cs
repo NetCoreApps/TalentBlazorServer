@@ -8,6 +8,7 @@ using TalentBlazor.Components.Pages.Account.Manage;
 using TalentBlazor.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Primitives;
+using TalentBlazor.ServiceModel;
 
 namespace Microsoft.AspNetCore.Routing;
 

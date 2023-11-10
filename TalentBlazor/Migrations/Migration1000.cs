@@ -61,6 +61,13 @@ public class Migration1000 : MigrationBase
         CreateBooking(Db, "First Booking!", RoomType.Queen, 10, 100, "BOOK10", "employee@email.com");
         CreateBooking(Db, "Booking 2", RoomType.Double, 12, 120, "BOOK25", "manager@email.com");
         CreateBooking(Db, "Booking the 3rd", RoomType.Suite, 13, 130, null, "employee@email.com");
+
+        var appHost = HostContext.AppHost as AppHost;
+        var profilesDir = appHost.IsDevelopmentEnvironment()
+            ? "~/wwwroot/profiles".MapProjectPath()
+            : Path.Join(AppContext.BaseDirectory, "wwwroot", "profiles");
+        Db.SeedTalent(appHost,profilesDir);
+        Db.SeedAttachments(appHost, appHost.ContentRootDirectory.RealPath.CombineWith("App_Data"));
     }
 
     public void CreateBooking(IDbConnection? db,

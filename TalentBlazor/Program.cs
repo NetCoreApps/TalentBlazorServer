@@ -8,6 +8,7 @@ using ServiceStack.Blazor;
 using TalentBlazor.Data;
 using TalentBlazor.Identity;
 using TalentBlazor.Components;
+using TalentBlazor.ServiceModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +84,7 @@ BlazorConfig.Set(new()
     IsDevelopment = app.Environment.IsDevelopment(),
     EnableLogging = app.Environment.IsDevelopment(),
     EnableVerboseLogging = app.Environment.IsDevelopment(),
+    RedirectSignIn = "/Account/Login"
 });
 
 app.Run();

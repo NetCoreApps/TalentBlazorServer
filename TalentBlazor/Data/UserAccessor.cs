@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using TalentBlazor.Identity;
+using TalentBlazor.ServiceModel;
 
 namespace TalentBlazor.Data;
 

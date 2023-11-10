@@ -15,7 +15,7 @@
         </header>
 
         <!-- Main -->
-        <main class="pt-8 pb-16">
+        <main class="pt-4 pb-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 @Body
             </div>
@@ -27,7 +27,7 @@
 @code {
     [CascadingParameter] protected Task<AuthenticationState>? AuthenticationStateTask { get; set; }
 
-    string LoginUrl { get; set; } = "/signin";
+    string LoginUrl { get; set; } = "/Account/Login";
 
     bool collapseLeftMenu = true;
 

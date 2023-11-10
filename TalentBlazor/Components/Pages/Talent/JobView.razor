@@ -1,5 +1,7 @@
 ﻿@page "/jobs/{JobId:int}"
 @inherits AppComponentBase
+@layout MainLayout
+@rendermode RenderMode.InteractiveServer
 
 @if (Job != null)
 {

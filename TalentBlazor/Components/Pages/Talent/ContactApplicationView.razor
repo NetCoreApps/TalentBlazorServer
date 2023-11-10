@@ -1,5 +1,7 @@
 ﻿@page "/jobs/{JobId:int}/applications/{JobAppId:int}"
 @inherits AppComponentBase
+@layout MainLayout
+@rendermode RenderMode.InteractiveServer
 
 <SetHeader>
     <div class="flex-1 min-w-0">
@@ -211,13 +213,13 @@
 
     JobApplication jobApp = new();
     List<JobApplicationEvent> jobAppEvents = new();
-    List<AppUser> appUsers = new();
+    List<ApplicationUser> appUsers = new();
 
     PhoneScreen phoneScreen = new();
     Interview interview = new();
     JobOffer jobOffer = new();
 
-    AppUser? employeeSelection;
+    ApplicationUser? employeeSelection;
 
     bool loading = true;
 
@@ -395,7 +397,7 @@
             errorStatus = api.Error;
     }
 
-    void OnEmployeeSelectionChanged(AppUser val)
+    void OnEmployeeSelectionChanged(ApplicationUser val)
     {
         Console.WriteLine($"Api user selection changed: {val.Email}");
         employeeSelection = val;
@@ -416,7 +418,7 @@
     {
         phoneScreenResult = await ApiAsync(new CreatePhoneScreen {
             JobApplicationId = JobAppId,
-            AppUserId = employeeSelection?.Id ?? 0,
+            ApplicationUserId = employeeSelection?.Id ?? "",
             ApplicationStatus = JobApplicationStatus.PhoneScreening
         });
         if (phoneScreenResult.Succeeded)
@@ -455,7 +457,7 @@
     {
         interviewResult = await ApiAsync(new CreateInterview {
             JobApplicationId = JobAppId,
-            AppUserId = employeeSelection?.Id ?? 0,
+            ApplicationUserId = employeeSelection?.Id ?? "",
             BookingTime = interviewBookingTime,
             ApplicationStatus = JobApplicationStatus.Interview
         });

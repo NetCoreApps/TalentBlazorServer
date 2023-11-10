@@ -57,7 +57,7 @@
                     <div class="flex-none p-6 text-center">
                         <img src="@(currentActive.ProfileUrl)" alt="" class="mx-auto h-16 w-16 rounded-full">
                         <h2 class="mt-3 font-semibold text-gray-900">@(currentActive.DisplayName)</h2>
-                        <p class="text-sm leading-6 text-gray-500">@(currentActive.Title)</p>
+                        @* <p class="text-sm leading-6 text-gray-500">@(currentActive.)</p> *@
                     </div>
                     <div class="flex flex-auto flex-col justify-between p-6">
                         <dl class="grid grid-cols-1 gap-x-6 gap-y-3 text-sm text-gray-700">
@@ -88,7 +88,7 @@
 
 @code {
 
-    public AppUser? EmployeeSelection
+    public ApplicationUser? EmployeeSelection
     {
         get => SelectedResult;
         set
@@ -103,17 +103,17 @@
     string searchTerm = "";
 
     [Parameter]
-    public EventCallback<AppUser> OnEmployeeSelection { get; set; }
+    public EventCallback<ApplicationUser> OnEmployeeSelection { get; set; }
 
     [Parameter]
-    public List<AppUser> Users { get; set; }
+    public List<ApplicationUser> Users { get; set; }
 
     [Parameter]
     public string ControlTitle { get; set; }
 
-    AppUser? currentActive;
+    ApplicationUser? currentActive;
 
-    IEnumerable<AppUser> Filtered()
+    IEnumerable<ApplicationUser> Filtered()
     {
         if (string.IsNullOrEmpty(searchTerm))
             return Users;
@@ -122,7 +122,7 @@
             x.Email.Contains(searchTerm));
     }
 
-    AppUser GetCurrentActive()
+    ApplicationUser GetCurrentActive()
     {
         var users = Filtered();
         if (currentActive == null && users.Count() > 0)
@@ -130,7 +130,7 @@
         return currentActive;
     }
 
-    void hoverOnUser(AppUser user)
+    void hoverOnUser(ApplicationUser user)
     {
         currentActive = user;
     }
@@ -156,12 +156,12 @@
         searchHasFocus = true;
     }
 
-    void UpdateActive(AppUser user)
+    void UpdateActive(ApplicationUser user)
     {
         currentActive = user;
     }
 
-    void SelectUser(AppUser user)
+    void SelectUser(ApplicationUser user)
     {
         EmployeeSelection = user;
     }
@@ -173,7 +173,7 @@
     }
 
     [Parameter]
-    public AppUser? SelectedResult { get; set; }
+    public ApplicationUser? SelectedResult { get; set; }
 
     bool hasMadeSearch = false;
 }

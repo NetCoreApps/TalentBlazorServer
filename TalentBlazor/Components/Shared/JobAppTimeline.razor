@@ -87,7 +87,7 @@
                                             case JobApplicationStatus.InterviewCompleted:
                                             case JobApplicationStatus.Offer:
                                             case JobApplicationStatus.Disqualified:
-                                                <p class="text-sm text-gray-500">@(e.Description) by <a href="/jobs/@JobApplication.JobId" class="font-medium text-gray-900 whitespace-nowrap">@(e.AppUser?.DisplayName)</a></p>
+                                                <p class="text-sm text-gray-500">@(e.Description) by <a href="/jobs/@JobApplication.JobId" class="font-medium text-gray-900 whitespace-nowrap">@(e.ApplicationUser?.DisplayName)</a></p>
                                                 break;
                                         }
 
